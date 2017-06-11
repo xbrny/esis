@@ -11,7 +11,7 @@
   <% @departments.each do |department| %>
   <div class="col-sm-6">
     <div class="panel panel-default">
-      <div class="panel-heading text-center"><%= department.name %></div>
+      <div class="panel-heading text-center"><%= link_to department.name, department_path(department) %></div>
       <div class="panel-body">
         <ul>
           <% department.subjects.each do |subject| %>
