@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-body text-left">
+    <p><%= comment.content %></p>
+  </div>
+   <div class="panel-footer">
+     <small>
+       <strong>Posted by: </strong><%= link_to comment.user.first_name, user_path(comment.user) %> |
+       <strong>on: </strong><%= comment.created_at.strftime("%a, %d %b %Y") %>
+       <div class="subject-actions">
+         <%= link_to 'Delete', [comment.subject, comment], method: :delete,
+                       data: { confirm: "Are your sure you want to delete this comment?" },
+                       class: "btn btn-xs btn-danger" %>
+       </div>
+     </small>
+   </div>
+</div>
