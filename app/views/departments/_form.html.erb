@@ -1,0 +1,30 @@
+<%= form_for @department, html: { class: "form-horizontal" } do |f| %>
+
+<% if @department.errors.any? %>
+<div class="row">
+<div class="col-xs-offset-1 col-xs-10 no-padding">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <p><strong><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</strong></p>
+      <ul>
+        <% @department.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+
+
+<div class="form-group">
+  <%= f.label :name, class: "control-label col-sm-1"  %>
+  <div class="col-sm-8">
+    <%= f.text_field :name, id: :name, class: "form-control" %>
+  </div>
+  <div class="col-sm-3">
+    <%= f.submit class: "btn btn-md btn-info" %>
+  </div>
+</div>
+<% end %>

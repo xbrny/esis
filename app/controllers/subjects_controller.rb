@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show]
 
   # GET /subjects
   # GET /subjects.json
@@ -60,6 +62,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:code, :name, :description)
+      params.require(:subject).permit(:code, :name, :description, :department_id)
     end
 end

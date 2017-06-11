@@ -1,28 +1,24 @@
-<h1 class="page-header text-center">Log in</h1>
-<%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
-<div class="form-group">
-  <div class="control-label col-sm-2">
-    <%= f.label :student_id, "Student ID" %>
-  </div>
-  <div class="col-sm-8">
-    <%= f.text_field :student_id, class: "form-control", placeholder: "Enter Student ID",
-                      autofocus: true, required: true %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="control-label col-sm-2">
-    <%= f.label :password %>
-  </div>
-  <div class="col-sm-8">
-    <%= f.password_field :password, class: "form-control", placeholder: "Enter password",
-                          autocomplete: "off", required: true %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <%= f.submit "Log in", class: 'btn btn-primary btn-md' %>
+<div class="col-sm-offset-2 col-sm-8 mt-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><h3 class="mt-0 mb-0 text-center"><strong>Sign in</strong></h3></h3>
+    </div>
+    <div class="panel-body">
+      <%= form_for(:session, url: login_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :student_id, "ID" %>
+        <%= f.text_field :student_id, class: "form-control", placeholder: "Enter Student ID",
+                          autofocus: true, required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter password",
+                                autocomplete: "off", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Log in", class: 'btn btn-primary btn-md btn-block' %>
+      </div>
+      <% end %>
+    </div> <!-- close pangel body -->
   </div>
 </div>
-<% end %>

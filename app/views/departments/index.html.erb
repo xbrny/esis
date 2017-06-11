@@ -1,0 +1,25 @@
+<h1 class="page-header text-center">Departments</h1>
+<div class="row clearfix">
+  <div class="col-xs-12 mb-4">
+  <% if logged_in? && current_user.admin? %>
+    <p><%= link_to 'Create new department', new_department_path, class: "btn btn-sm btn-default pull-right" %></p>
+  <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <% @departments.each do |department| %>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center"><%= department.name %></div>
+      <div class="panel-body">
+        <ul>
+          <% department.subjects.each do |subject| %>
+          <li><%= link_to "#{subject.code}-#{subject.name}", subject_path(subject) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

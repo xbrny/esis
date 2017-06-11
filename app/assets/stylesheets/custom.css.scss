@@ -1,10 +1,44 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-height: 83%
 }
 
 .table-actions .btn {
   width: 60px;
+}
+
+#login-form-panel {
+  margin-top: 20%;
+}
+
+.welcome-text {
+  margin-top: 22%;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 25px;
+  position: relative;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+  .welcome-text {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.2em;
+    font-weight: bold;
+  }
 }

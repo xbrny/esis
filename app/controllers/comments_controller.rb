@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :require_user, only: [:create, :destroy]
 
   def create
     @subject = Subject.find(params[:subject_id])
     @comment = Comment.new(comment_params)
     @comment.subject = @subject
-    @comment.user = User.first
+    @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment was successfully posted"
       redirect_to subject_path(@subject)
