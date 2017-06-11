@@ -1,24 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="clearfix">
+          <strong>User information</strong>
+        </h4>
 
-<p>
-  <strong>Student:</strong>
-  <%= @user.student_id %>
-</p>
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed">
+          <tr>
+            <th>ID</th>
+            <td><%= @user.student_id %></td>
+          </tr>
+          <tr>
+            <th>First name</th>
+            <td><%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th>Last name</th>
+            <td><%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email %></td>
+          </tr>
+        </table>
+        <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-xs btn-primary pull-right" %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <div class="col-sm-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="clearfix">
+          <strong>User's comments</strong>
+        </h4>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed">
+          <% if @user.comments.any? %>
+            <% @user.comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= truncate(comment.content, length: 150) %>
+                <div class="subject-actions">
+                  <small>
+                    Posted on: <%= comment.created_at.strftime("%a, %d %b %Y") %> -
+                    <%= comment.subject.name %>
+                  </small>
+                  <%= link_to 'Delete', [comment.subject, comment], method: :delete,
+                                data: { confirm: "Are your sure you want to delete this comment?" },
+                                class: "btn btn-xs btn-danger pull-right" %>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td class="text-center">User haven't post any comment</td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

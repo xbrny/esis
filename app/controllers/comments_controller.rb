@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
       redirect_to subject_path(@subject)
     else
       flash[:danger] = "Failed to post comment"
+      redirect_to subject_path(@subject)
     end
   end
 
