@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @users.delete(current_user) if logged_in?
   end
 
   # GET /users/1
