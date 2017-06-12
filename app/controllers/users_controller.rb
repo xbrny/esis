@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @users.delete(current_user) if logged_in?
   end
 
   # GET /users/1
@@ -51,6 +50,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    session[:user_id] = nil if current_user == @user
     @user.destroy
     flash[:danger] = "User was successfully deleted"
     redirect_to users_path
